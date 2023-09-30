@@ -1,0 +1,17 @@
+<h1>
+  Welcome to
+  <i class="fa-solid fa-book"></i>
+  <strong>Bookers</strong>
+</h1>
+<div class="context">
+  <p>In
+  <i class="fa-solid fa-book"></i>
+  <strong>Bookers</strong>,
+  </p>
+  <p>you can share and exchange your opinions , inpressions , and emotions</p>
+  <p>about various books!</p>
+</div>
+<div class="buttons">
+  <%= button_to "Log in", {controller: 'devise/sessions', action: 'new'}, {method: :get} %>
+  <%= button_to "Sign up", {controller: 'devise/registrations', action: 'new'}, {method: :get} %>
+</div>

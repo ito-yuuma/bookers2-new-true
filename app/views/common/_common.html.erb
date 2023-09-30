@@ -1,0 +1,31 @@
+<h1>User info</h1>
+
+  <% if user.profile_image.attached? %>
+    <%= image_tag user.profile_image, size: "200x200" %>
+  <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+
+  <p class="name">name</p>
+  <%= current_user.name %>
+  <p class="intro">introduction</p>
+  <%= current_user.introduction %>
+
+<%= button_to editer_path(current_user), class: "buttoner", method: :get do %>
+  <i class="fa-solid fa-user-gear"></i>
+<% end %>
+
+
+
+<h1>New book</h1>
+<%= form_with model: book do |f| %>
+ <p class="title">Title</p>
+
+ <%= f.text_field :title %>
+
+ <p class="opinion">Opinion</p>
+
+ <%= f.text_area :body %>
+
+ <%= f.submit 'Create Book' %>
+<% end %>

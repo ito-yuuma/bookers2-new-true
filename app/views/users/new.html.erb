@@ -1,0 +1,41 @@
+<h1>User info</h1>
+
+  <%= image_tag @user.get_profile_image(100,100) %>
+
+  <p class="name">name</p>
+  <%= @user.name %>
+  <p class="intro">introduction</p>
+  <%= @user.introduction %>
+  <% if @user == current_user %>
+    <%= button_to editer_path(@user), class: "buttoner", method: :get do %>
+      <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  <% end %>
+
+
+<h1>New book</h1>
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+     <p class="title">Title</p>
+
+     <%= f.text_field :title %>
+
+     <p class="opinion">Opinion</p>
+
+     <%= f.text_area :body %>
+
+     <%= f.submit 'Create Book' %>
+<% end %>
+
+<h1>Books</h1>
+<p class="titls">Title</p>
+<p class="opinions">Opinion</p>
+
+<div>
+  <% @books.each do |book| %>
+    <div class="book-comment">
+        <span class="book-user-image"><%= image_tag book.user.get_profile_image(100,100) %></span>
+        <span class="book-body"><%= link_to book.title, book_path(book.id)  %></span>
+        <span class="book-title"><%= book.body %></span>
+    </div>
+  <% end %>
+</div>

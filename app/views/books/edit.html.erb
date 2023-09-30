@@ -1,0 +1,26 @@
+<h1>Editing Book</h1>
+
+<% if @booker.errors.any? %>
+  <%= @booker.errors.count %> errors prohibited this obj from being saved:
+  <ul>
+    <% @booker.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @books do |f| %>
+
+    <p class="ti">Title</p>
+    <%= f.text_field :title %>
+
+    <p class="op">Opinion</p>
+    <%= f.text_area :body %>
+
+    <%= f.submit 'Update Book', class:"submit" %>
+
+<% end %>
+<div class="urls">
+<%= link_to "Show", book_path(@books.id) %>
+<%= link_to "Back", books_path %>
+</div>

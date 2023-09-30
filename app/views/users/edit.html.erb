@@ -1,0 +1,14 @@
+<h1>User Info</h1>
+<%= form_with model: @user, url: editer_path do |f| %>
+<p class="n">Name</p>
+<%= f.text_field :name %>
+
+<p class="im">Image</p>
+<%= f.file_field :profile_image, accept: "image/*" %>
+
+<p class="i">Introduction</p>
+<%= f.text_area :introduction %>
+
+<%= f.submit 'Update User' %>
+
+<% end %>
