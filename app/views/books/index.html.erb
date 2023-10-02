@@ -14,12 +14,19 @@
 
         <%= image_tag current_user.get_profile_image(100,100) %>
 
-        <table class="table">
-          <p class="name">name</p>
-          <%= current_user.name %>
-          <p class="intro">introduction</p>
-          <%= current_user.introduction %>
+        <table class="table ">
+          <tbody>
+            <tr>
+              <th><p class="name">name</p></th>
+              <th><%= current_user.name %></th>
+            </tr>
+            <tr>
+              <th><p class="intro">introduction</p></th>
+              <th><%= current_user.introduction %></th>
+            </tr>
+          </tbody>
         </table>
+
         <div class="row">
           <%= link_to editer_path(current_user), class: "btn btn-outline-secondary btn-block", method: :get do %>
             <i class="fa-solid fa-user-gear"></i>
@@ -43,22 +50,28 @@
     </div>
     <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
-        
+
         <table class="table table-hover table-inverse">
-        
-          <p>Title</p>
-          <p>Opinion</p>
-  
-          <div>
-            <% @books.each do |book| %>
+          <thead>
+            <tr>
+              <th></th>
+              <th><p>Title</p></th>
+              <th><p>Opinion</p></th>
+            </tr>
+          </thead>
+
+
+          <% @books.each do |book| %>
+            <tbody>
+              <tr>
               <div class="book-comment">
-                  <span class="book-user-image"><%= image_tag book.user.get_profile_image(100,100) %></span>
-                  <span class="book-body"><%= link_to book.title, book_path(book.id)  %></span>
-                  <span class="book-title"><%= book.body %></span>
+                  <td><span class="book-user-image"><%= image_tag book.user.get_profile_image(100,100) %></span></td>
+                  <td><span class="book-body"><%= link_to book.title, book_path(book.id)  %></span></td>
+                  <td><span class="book-title"><%= book.body %></span></td>
               </div>
-            <% end %>
-          </div>
-        
+              </tr>
+            </tbody>
+          <% end %>
         </table>
     </div>
   </div>

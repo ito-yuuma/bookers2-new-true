@@ -9,15 +9,19 @@
         <%= image_tag @user.get_profile_image(100,100) %>
 
         <table class="table">
+          <tbody>
+            <tr>
+            <th><p>name</p></th>
+            <th><%= @user.name %></th>
+            </tr>
+            <tr>
+            <th><p>introduction</p></th>
+            <th><%= @user.introduction %></th>
+            </tr>
 
-          <p>name</p>
 
-          <%= @user.name %>
 
-          <p>introduction</p>
-
-          <%= @user.introduction %>
-
+          </tbody>
         </table>
 
         <div class="row">
@@ -49,17 +53,25 @@
 
         <h2>Books</h2>
         <table class="table table-hover table-inverse">
-          <p>Title</p>
+          <thead>
+            <tr>
+              <th></th>
+              <th><p>Title</p></th>
+              <th><p>Opinion</p></th>
+            </tr>
+          </thead>
 
-          <p>Opinion</p>
-
-
-            <% @books.each do |book| %>
+        <% @books.each do |book| %>
+          <tbody>
+            <tr>
               <div class="book-comment">
-                  <span class="book-user-image"><%= image_tag book.user.get_profile_image(100,100) %></span>
-                  <span class="book-body"><%= link_to book.title, book_path(book.id)  %></span>
-                  <span class="book-title"><%= book.body %></span>
+                  <td><span><%= image_tag book.user.get_profile_image(100,100) %></span></td>
+                  <td><span><%= link_to book.title, book_path(book.id)  %></span></td>
+                  <td><span><%= book.body %></span></td>
               </div>
+            </tr>
+
+          </tbody>
             <% end %>
         </table>
 

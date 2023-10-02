@@ -23,44 +23,53 @@
                   <span class="navbar-toggler-icon"></span>
                   </button>
 
-
-
                     <% if user_signed_in? %>
-                      <li>
-                        <i class="fa-solid fa-house"></i>
-                        <%= link_to "Home", user_path(id: current_user.id) %>
-                      </li>
-                      <li>
-                        <i class="fa-solid fa-users"></i>
-                        <%= link_to "Users", users_path %>
-                      </li>
-                      <li>
-                        <i class="fa-solid fa-book-open"></i>
-                        <%= link_to "Books", books_path %>
-                      </li>
-                      <li>
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-                      </li>
+                    <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+                      <ul class="navbar-nav ml-auto">
+                        <li>
+                          <%= link_to user_path(id: current_user.id), class: "nav-link text-light" do %>
+                          <i class="fa-solid fa-house "></i>Home
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to users_path, class: "nav-link text-light" do %>
+                          <i class="fa-solid fa-users"></i>Users
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to books_path, class: "nav-link text-light" do %>
+                          <i class="fa-solid fa-book-open"></i>Books
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                          <i class="fa-solid fa-right-from-bracket"></i>Log out
+                          <% end %>
+                        </li>
+                      </ul>
+                    </div>
                     <% else %>
-
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style>
                       <ul class="navbar-nav ml-auto">
                             <li>
-                              <i class="fa-solid fa-house"></i>
-                              <%= link_to "Home", root_path, class: 'nav-link text-light' %>
+                              <%= link_to root_path, class: "nav-link text-light" do %>
+                              <i class="fa-solid fa-house "></i>Home
+                              <% end %>
                             </li>
                             <li>
-                              <i class="fa-solid fa-link"></i>
-                              <%= link_to "About", home_about_path, class: "nav-link text-light" %>
+                              <%= link_to home_about_path, class: "nav-link text-light" do %>
+                              <i class="fa-solid fa-link"></i>About
+                              <% end %>
                             </li>
                             <li>
-                              <i class="fa-solid fa-user-plus"></i>
-                              <%= link_to "Sign up", new_user_registration_path, class: "nav-link text-light" %>
+                              <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                              <i class="fa-solid fa-user-plus"></i>Sign up
+                              <% end %>
                             </li>
                             <li>
-                              <i class="fa-solid fa-right-to-bracket"></i>
-                              <%= link_to "Log in", new_user_session_path, class: "nav-link text-light" %>
+                              <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                              <i class="fa-solid fa-right-to-bracket"></i>Log in
+                              <% end %>
                             </li>
                       </ul>
                     </div>
@@ -88,3 +97,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>
+

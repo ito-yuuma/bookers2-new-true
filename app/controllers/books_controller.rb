@@ -6,7 +6,6 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
 
-
   end
 
   def create

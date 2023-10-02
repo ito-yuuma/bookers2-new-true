@@ -1,42 +1,76 @@
-<h1>User info</h1>
+<p id="notice"></p>
+<div class="container">
+ <div class="row">
+   <div class="col-md-3">
+       <h2>User info</h2>
 
-<%= image_tag @books.user.get_profile_image(100,100) %>
+       <%= image_tag @books.user.get_profile_image(100,100) %>
+        <table class="table">
+          <tbody>
+           <tr></tr>
+           <tr>
+         	  <th><p class="name">name</p></th>
+         	  <th><%= @books.user.name %></th>
+           </tr>
+           <tr>
+         	  <th><p class="intro">introduction</p></th>
+         	  <th><%= @books.user.introduction %></th>
+           </tr>
+          </tbody>
+        </table>
 
-  <p class="name">name</p>
-  <%= @books.user.name %>
-  <p class="intro">introduction</p>
-  <%= @books.user.introduction %>
-
-<%= button_to editer_path(@books.user.id), class: "buttoner", method: :get do %>
-  <i class="fa-solid fa-user-gear"></i>
-<% end %>
-
-
-
-<h1>New book</h1>
-<%= form_with model: @book, url: '/books/:id', method: :post do |f| %>
- <p class="title">Title</p>
-
- <%= f.text_field :title %>
-
- <p class="opinion">Opinion</p>
-
- <%= f.text_area :body %>
-
- <%= f.submit 'Create Book' %>
-<% end %>
-
-<h1>Book detail</h1>
-<p class="titls">Title</p>
-<p class="opinions">Opinion</p>
+       <div class="row">
+       <%= link_to editer_path(@books.user.id), class: "btn btn-outline-secondary btn-block", method: :get do %>
+         <i class="fa-solid fa-user-gear"></i>
+       <% end %>
+       </div>
 
 
-<p class="the"><%= image_tag @books.user.get_profile_image(100,100) %></p>
- <p class="the"><%= link_to @books.user.name, user_path(@books.user.id) %></p>
-<p class="the"><%= link_to @books.title, book_path(@books.id) %></p>
-<p class="the"><%= @books.body %></p>
-<% if @books.user == current_user %>
- <%= button_to 'Edit', {:controller => "books", :action => "edit"}, {:method => :get} %>
- <%= button_to 'Destroy', book_path(@books.id), method: :delete, "data-confirm" => "Are you sure?" %>
-<% end %>
 
+       <h2 class="mt-3">New book</h2>
+       <%= form_with model: @book, url: '/books/:id', method: :post do |f| %>
+            <div class="form-group">
+             <p class="title">Title</p>
+             <%= f.text_field :title, class: "form-control book_title" %>
+            </div>
+            <div class="form-group">
+             <p class="opinion">Opinion</p>
+             <%= f.text_area :body, class: "form-control book_body" %>
+            </div>
+            <div class="form-group">
+             <%= f.submit 'Create Book', class: "btn btn-success"   %>
+            </div>
+       <% end %>
+   </div>
+   <div class="col-md-8 offset-md-1">
+       <h2>Book detail</h2>
+       <table class="table">
+         <tbody>
+           <tr>
+            <td>
+             <%= link_to user_path(@books.user.id) do %>
+              <%= image_tag @books.user.get_profile_image(100,100) %>
+              <br><%= @books.user.name %>
+             <% end %>
+            </td>
+            <td><p><%= link_to @books.title, book_path(@books.id) %></p></td>
+            <td><p><%= @books.body %></p></td>
+            <% if @books.user == current_user %>
+            <td><%= link_to 'Edit', {:controller => "books", :action => "edit"}, {:method => :get, class: "btn btn-sm btn-success"} %></td>
+            <td><%= link_to 'Destroy', book_path(@books.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "Are you sure?" %></td>
+            <% end %>
+           </tr>
+         </tbody>
+       </table>
+
+
+
+
+
+
+
+
+
+   </div>
+ </div>
+</div>
