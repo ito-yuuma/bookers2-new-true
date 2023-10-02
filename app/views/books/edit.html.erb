@@ -1,9 +1,9 @@
 <h1>Editing Book</h1>
 
-<% if @booker.errors.any? %>
-  <%= @booker.errors.count %> errors prohibited this obj from being saved:
+<% if @books.errors.any? %>
+  <%= @books.errors.count %> errors prohibited this obj from being saved:
   <ul>
-    <% @booker.errors.full_messages.each do |message| %>
+    <% @books.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
@@ -21,6 +21,6 @@
 
 <% end %>
 <div class="urls">
-<%= link_to "Show", book_path(@books.id) %>
+<%= link_to "Show", book_path %>
 <%= link_to "Back", books_path %>
 </div>

@@ -6,11 +6,11 @@
   <%= @user.name %>
   <p class="intro">introduction</p>
   <%= @user.introduction %>
-  <% if @user == current_user %>
+
     <%= button_to editer_path(@user), class: "buttoner", method: :get do %>
       <i class="fa-solid fa-user-gear"></i>
     <% end %>
-  <% end %>
+
 
 
 <h1>New book</h1>

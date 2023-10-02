@@ -1,13 +1,13 @@
 <h1>User info</h1>
 
-<%= image_tag current_user.get_profile_image(100,100) %>
+<%= image_tag @books.user.get_profile_image(100,100) %>
 
   <p class="name">name</p>
-  <%= current_user.name %>
+  <%= @books.user.name %>
   <p class="intro">introduction</p>
-  <%= current_user.introduction %>
+  <%= @books.user.introduction %>
 
-<%= button_to editer_path(current_user), class: "buttoner", method: :get do %>
+<%= button_to editer_path(@books.user.id), class: "buttoner", method: :get do %>
   <i class="fa-solid fa-user-gear"></i>
 <% end %>
 
@@ -32,7 +32,7 @@
 
 
 <p class="the"><%= image_tag @books.user.get_profile_image(100,100) %></p>
- <p class="the"><%= link_to @books.user.name, user_path(current_user.id) %></p>
+ <p class="the"><%= link_to @books.user.name, user_path(@books.user.id) %></p>
 <p class="the"><%= link_to @books.title, book_path(@books.id) %></p>
 <p class="the"><%= @books.body %></p>
 <% if @books.user == current_user %>

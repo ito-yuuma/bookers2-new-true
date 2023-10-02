@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   post '/books/:id' => 'books#create'
   delete '/books/:id' => 'books#destroy'
   patch '/books/:id' => 'books#update'
+  put '/books/:id' => 'books#update'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
