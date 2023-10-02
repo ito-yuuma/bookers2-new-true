@@ -1,41 +1,56 @@
-<h1>User info</h1>
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
 
-<%= image_tag current_user.get_profile_image(100,100) %>
+        <h2>User info</h2>
+        <%= image_tag current_user.get_profile_image(100,100) %>
 
-  <p class="name">name</p>
-  <%= current_user.name %>
-  <p class="intro">introduction</p>
-  <%= current_user.introduction %>
+        <table class="table">
+          <p class="name">name</p>
+          <%= current_user.name %>
+          <p class="intro">introduction</p>
+          <%= current_user.introduction %>
+        </table>
+        <div class="row">
+        <%= link_to editer_path(current_user), class: "btn btn-outline-secondary btn-block", method: :get do %>
+          <i class="fa-solid fa-user-gear"></i>
+        <% end %>
+        </div>
 
-<%= button_to editer_path(current_user), class: "buttoner", method: :get do %>
-  <i class="fa-solid fa-user-gear"></i>
-<% end %>
-
-
-
-<h1>New book</h1>
-<%= form_with model: @book, url: '/books/:id', method: :post do |f| %>
-     <p class="title">Title</p>
-
-     <%= f.text_field :title %>
-
-     <p class="opinion">Opinion</p>
-
-     <%= f.text_area :body %>
-
-     <%= f.submit 'Create Book' %>
-<% end %>
-
-<h1>Users</h1>
-<p class="images">image</p>
-<p class="names">name</p>
-
-<div>
-  <% @users.each do |user| %>
-    <div class="user-comment">
-        <span class="user-image"><%= image_tag user.get_profile_image(100,100) %></span>
-        <span class="user-name"><%= user.name  %></span>
-        <span class="user-name"><%= link_to 'show', user_path(user.id)  %></span>
+        <h2 class="mt-3">New book</h2>
+        <%= form_with model: @book, url: '/books/:id', method: :post do |f| %>
+          <div class="form-group">
+             <p>Title</p>
+             <%= f.text_field :title, class: "form-control book_title" %>
+          </div>
+          <div class="form-group">
+             <p>Opinion</p>
+             <%= f.text_area :body, class: "form-control book_body", id: "book_body"  %>
+          </div>
+          <div class="form-group">
+             <%= f.submit 'Create Book', class: "btn btn-success" %>
+          </div>
+        <% end %>
     </div>
-  <% end %>
+
+    <div class="col-md-8 offset-md-1">
+
+      <h2>Users</h2>
+      <table class="table">
+        <p>image</p>
+        <p>name</p>
+
+        <div>
+          <% @users.each do |user| %>
+            <div class="user-comment">
+                <span class="user-image"><%= image_tag user.get_profile_image(100,100) %></span>
+                <span class="user-name"><%= user.name  %></span>
+                <span class="user-name"><%= link_to 'show', user_path(user.id)  %></span>
+            </div>
+          <% end %>
+        </div>
+      </table>
+    </div>
+  </div>
 </div>
