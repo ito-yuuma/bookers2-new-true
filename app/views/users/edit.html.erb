@@ -12,8 +12,8 @@
           <% end %>
         </ul>
       <% end %>
-
-      <%= form_with model: @user, url: editer_path do |f| %>
+      
+      <%= form_with model: @user, url: edit_user_path do |f| %>
         <div class="form-group">
           <p class="n">Name</p>
           <%= f.text_field :name, class: "form-control name" %>

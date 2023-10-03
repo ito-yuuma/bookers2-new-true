@@ -28,7 +28,7 @@
         </table>
 
         <div class="row">
-          <%= link_to editer_path(current_user), class: "btn btn-outline-secondary btn-block", method: :get do %>
+          <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block", method: :get do %>
             <i class="fa-solid fa-user-gear"></i>
           <% end %>
         </div>
@@ -65,7 +65,11 @@
             <tbody>
               <tr>
               <div class="book-comment">
-                  <td><span class="book-user-image"><%= image_tag book.user.get_profile_image(100,100) %></span></td>
+                  <td><span class="book-user-image">
+                    <%= link_to user_path(book.user.id)  do %>
+                    <%= image_tag book.user.get_profile_image(80,80) %>
+                    <% end %>
+                  </span></td>
                   <td><span class="book-body"><%= link_to book.title, book_path(book.id)  %></span></td>
                   <td><span class="book-title"><%= book.body %></span></td>
               </div>
