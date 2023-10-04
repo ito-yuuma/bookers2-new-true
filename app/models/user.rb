@@ -19,4 +19,5 @@ class User < ApplicationRecord
   validates :introduction, presence:false, length: { maximum: 50 }
 
   has_many :books, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end

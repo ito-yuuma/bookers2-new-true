@@ -3,8 +3,8 @@ before_action :correct_user, only: [:edit, :update]
 
   def index
     @books = Book.all
-    @book = Book.new
-
+    @booker = Book.new
+    @book = Book.find_by(params[:id])
   end
 
   def create
