@@ -72,6 +72,7 @@
                   </span></td>
                   <td><span><%= link_to book.title, book_path(book.id)  %></span></td>
                   <td><span><%= book.body %></span></td>
+                  <td><p>コメント数:<%= book.book_comments.count %></p></td>
               </div>
             </tr>
 
