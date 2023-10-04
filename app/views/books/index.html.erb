@@ -67,7 +67,7 @@
               <div class="book-comment">
                   <td><span class="book-user-image">
                     <%= link_to user_path(book.user.id)  do %>
-                    <%= image_tag book.user.get_profile_image(80,80) %>
+                    <%= image_tag book.user.get_profile_image(50,50) %>
                     <% end %>
                   </span></td>
                   <td><span class="book-body"><%= link_to book.title, book_path(book.id)  %></span></td>
@@ -87,6 +87,7 @@
                       </p>
                     <% end %>
                   </td>
+                  <td>コメント数:<%= book.book_comments.count %></td>
               </div>
               </tr>
             </tbody>
