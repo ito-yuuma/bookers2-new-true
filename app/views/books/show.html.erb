@@ -88,7 +88,7 @@
                       <%= image_tag book_comment.user.get_profile_image(50,50) %>
                       <%= book_comment.comment %>
                       <% if book_comment.user == current_user %>
-                        <%= link_to "destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "Are you sure?" %>
+                        <%= link_to "Destroy", book_book_comment_path(book_comment.book.id, book_comment.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "Are you sure?" %>
                       <% end %>
                      </div>
                      <%= link_to user_path(book_comment.user.id) do %>
