@@ -59,6 +59,7 @@
               <td><%= link_to 'Edit', {:controller => "books", :action => "edit"}, {:method => :get, class: "btn btn-sm btn-success"} %></td>
               <td><%= link_to 'Destroy', book_path(@books.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "Are you sure?" %></td>
               <% else %>
+              <% end %>
               <td>
                     <% if @books.favorited_by?(current_user) %>
                             <p>
@@ -73,6 +74,7 @@
                               <% end %>
                             </p>
                     <% end %>
+
               </td>
               <td>
                     <p>コメント数:<%= @books.book_comments.count %></p>
@@ -86,7 +88,7 @@
                       <%= image_tag book_comment.user.get_profile_image(50,50) %>
                       <%= book_comment.comment %>
                       <% if book_comment.user == current_user %>
-                        <%= link_to "destroy", book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "Are you sure?" %>
+                        <%= link_to "destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "Are you sure?" %>
                       <% end %>
                      </div>
                      <%= link_to user_path(book_comment.user.id) do %>
@@ -102,7 +104,7 @@
                       <% end %>
                    </p>
              </div>
-             <% end %>
+
 
 
 
